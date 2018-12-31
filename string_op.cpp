@@ -12,10 +12,10 @@ using namespace std;
 int main()
 {
 	
-	char a, message1[50], message2[150] = { "abc\0" }, message3[250], test[2], server_IP[] = "127.0.0.3";
+	char a, message1[50], message2[150] = { "abc\0" }, message3[250], test[15], server_IP[] = "127.0.0.3";
 	int i, j, k,n;
 	time_t t;
-	
+	char *ret;
 
 	//get string from user
 	printf("enter message:\n");
@@ -23,7 +23,7 @@ int main()
 
 
 	//add IP to the end of the message
-	strcat(message1, "   $$$");
+	strcat(message1, " $$$   ");
 	strcat(message1, server_IP);
 	printf("%s", message1);
 
@@ -97,6 +97,12 @@ int main()
 	}
 
 	printf("\n %s \n\n", message3);
+	
+
+	//extract the ip from the text
+	ret = strstr(message3, "   ");
+	
+	printf("The IP is: %s\n", ret);
 
 	return 0;
 }
